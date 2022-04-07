@@ -1,0 +1,12 @@
+#include <crtdbg.h>
+#include <ObjBase.h>
+
+void AllocReal(LeakOption type, bool bFree)
+{
+	int* leaked_memory = NULL;
+	int* leaked_memory_dbg = NULL;
+		leaked_memory     = (int*)malloc(78);
+		leaked_memory_dbg = (int*)_malloc_dbg(80, _NORMAL_BLOCK,__FILE__,__LINE__);
+		if (bFree)
+		{
+			free(leaked_memory);
